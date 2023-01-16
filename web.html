@@ -9,8 +9,7 @@
       rel="stylesheet"
       href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css"
     />
-    <script src="results.js"></script>
-    <script src="web.js"></script>
+    <link rel="stylesheet" href="results.css" />
   </head>
   <body class="container">
     <form action="web.html">
@@ -23,15 +22,24 @@
             <input
               type="search"
               name="query"
-              id=""
+              id="query"
               placeholder="Search with confidence"
             />
           </li>
         </ul>
-        <ul>
-          <a href="about.html">About</a>
+        <ul class="hide-small-screens">
+          <li><a href="about.html">About</a></li>
+          <li><a href="settings.html">Settings</a></li>
+          <li><a href="apps.html">Apps</a></li>
         </ul>
       </nav>
     </form>
+    <ol id="results"></ol>
+    <footer>
+      Copyright (c) Pupa. <a href="privacy.html">Privacy policy</a>
+    </footer>
+    <script src="global.js"></script>
+    <script src="results.js"></script>
+    <script src="web.js"></script>
   </body>
 </html>

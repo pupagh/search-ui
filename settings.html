@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About us</title>
+    <title>Settings</title>
     <link
       rel="stylesheet"
       href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css"
@@ -25,13 +25,32 @@
         </ul>
       </nav>
     </form>
-    <p>
-      At Pupa, we provide services to help with your privacy and competitors to
-      privacy invasive websites.
-    </p>
+    <div class="grid">
+      <div>
+        <label for="instanceurl">Backend Server URL:</label>
+        <input
+          type="text"
+          name="instanceurl"
+          id="instanceurl"
+          value="https://api.pupa.rf.gd"
+        />
+      </div>
+    </div>
+    <div class="grid">
+      <div>
+        <input type="checkbox" name="darkmode" id="darkmode" />
+        <label for="darkmode"
+          >Use dark mode (overrides system preference even when
+          unchecked)</label
+        >
+      </div>
+    </div>
+    <br />
+    <button onclick="save();">Save & exit</button>
     <footer>
       Copyright (c) Pupa. <a href="privacy.html">Privacy policy</a>
     </footer>
+    <script src="settings.js"></script>
     <script src="global.js"></script>
   </body>
 </html>
