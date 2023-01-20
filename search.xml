@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <ShortName>Pupa Search</ShortName>
+  <Description>Search the web with Pupa</Description>
+  <Url type="text/html" template="https://pupa.rf.gd/web.html?query={searchTerms}"/>
+  <Language>en-us</Language>
+  <InputEncoding>UTF-8</InputEncoding>
+  <Image height="16" width="16" type="image/x-icon">https://pupa.rf.gd/favicon.ico</Image>
+  <Developer>Pupa</Developer>
+  <Attribution>Search data from Bing</Attribution>
+  <SyndicationRight>open</SyndicationRight>
+  <AdultContent>false</AdultContent>
+  <Tags>pupa</Tags>
+  <OutputEncoding>UTF-8</OutputEncoding>
+  <InputEncoding>UTF-8</InputEncoding>
+</OpenSearchDescription>

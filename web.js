@@ -2,9 +2,26 @@
   let query = new URLSearchParams(location.search).get("query");
   displayQuery(query);
 
+  if (query.trim().toLowerCase() == "bing") {
+    if (
+      confirm(
+        "The search term 'Bing' causes issues. Would you like to go to Bing.com?"
+      )
+    ) {
+      location = "//bing.com";
+    } else {
+      location = "index.html";
+    }
+  }
+
   let page = 0;
   let results = await getWebResults(query, page);
   let resultsElement = document.getElementById("results");
+
+  if ("calculated" in results) {
+    document.getElementById("calc").append(results.calculated);
+    document.getElementById("calc").append(document.createElement("hr"));
+  }
 
   function truncateString(str, n) {
     if (str.length > n) {
