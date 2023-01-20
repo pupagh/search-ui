@@ -16,25 +16,39 @@
 
   if (results.results.length == 0) {
     resultsElement.textContent = "Sorry, there wasn't any results. :C";
+    document.getElementById("more-results").setAttribute("disabled", "true");
   }
-  results.results.forEach((result) => {
-    let li = document.createElement("li");
-    let resultTitle = document.createElement("h3");
-    let resultInnerTitle = document.createElement("a");
-    let resultFavicon = document.createElement("img");
-    resultFavicon.src = result.favicon;
-    resultFavicon.style.verticalAlign = "middle";
-    resultFavicon.style.paddingRight = "10px";
-    resultInnerTitle.textContent = result.title;
-    resultInnerTitle.insertAdjacentElement("afterbegin", resultFavicon);
-    resultInnerTitle.href = result.url;
-    resultTitle.style.marginBottom = 0;
-    resultTitle.append(resultInnerTitle);
-    let url = document.createElement("p");
-    url.textContent = truncateString(result.url, 50);
-    url.style.paddingTop = "2px";
-    li.append(resultTitle);
-    li.append(url);
-    resultsElement.append(li);
-  });
+  async function displayResults(results) {
+    results.results.forEach((result) => {
+      let li = document.createElement("li");
+      let resultTitle = document.createElement("h3");
+      let resultInnerTitle = document.createElement("a");
+      let resultFavicon = document.createElement("img");
+      resultFavicon.src = result.favicon;
+      resultFavicon.style.verticalAlign = "middle";
+      resultFavicon.style.paddingRight = "10px";
+      resultInnerTitle.textContent = result.title;
+      resultInnerTitle.insertAdjacentElement("afterbegin", resultFavicon);
+      resultInnerTitle.href = result.url;
+      resultTitle.style.marginBottom = 0;
+      resultTitle.append(resultInnerTitle);
+      let url = document.createElement("p");
+      url.textContent = truncateString(result.url, 50);
+      url.style.paddingTop = "2px";
+      let snippet = document.createElement("p");
+      snippet.textContent = result.snippet;
+      li.append(resultTitle);
+      li.append(url);
+      li.append(snippet);
+      resultsElement.append(li);
+    });
+  }
+  displayResults(results);
+  document.getElementById("more-results").removeAttribute("aria-busy");
+  document.getElementById("more-results").onclick = async () => {
+    document.getElementById("more-results").setAttribute("aria-busy", "true");
+    page += 1;
+    displayResults(await getWebResults(query, page));
+    document.getElementById("more-results").removeAttribute("aria-busy");
+  };
 })();
